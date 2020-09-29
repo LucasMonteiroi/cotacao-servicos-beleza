@@ -1,11 +1,9 @@
 import CotacaoRepository from '../../repositories/cotacaoRepository'
 import Cotacao from '../../entities/cotacao'
 
-const getAllCotacao = (
-  cotacaoRepository: CotacaoRepository
-) => async () => {
-  const cotacaos: Cotacao[] = await cotacaoRepository.getAll()
-  return cotacaos
+export default class GetAllCotacaoInteractor {
+  async getAllCotacao (cotacaoRepository: CotacaoRepository): Promise<Cotacao[]> {
+    const cotacoes: Cotacao[] = await cotacaoRepository.getAll()
+    return cotacoes
+  }
 }
-
-export default getAllCotacao
