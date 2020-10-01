@@ -2,10 +2,10 @@ import Cotacao from '../entities/cotacao'
 
 interface CotacaoRepository {
   create: (cotacao: Cotacao) => Promise<Cotacao>
-  getById: (id: string) => Promise<Cotacao>
+  getById: (id: String) => Promise<Cotacao>
   getAll: () => Promise<Cotacao[]>
-  update: (cotacao: Cotacao) => Promise<boolean>
-  delete: (id: string) => Promise<boolean>
+  update: (idCotacao: string, cotacao: Cotacao) => Promise<boolean>
+  delete: (id: String) => Promise<boolean>
 }
 
 export default CotacaoRepository
