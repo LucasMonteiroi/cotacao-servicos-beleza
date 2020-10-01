@@ -1,8 +1,8 @@
 # Dependency Directories
-node_modules
+node_modules/
 
 # Production
 dist
 
 # Environment
-.env
+.env/
