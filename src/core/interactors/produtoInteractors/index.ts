@@ -6,7 +6,7 @@ import DeleteProdutoInteractor from './deleteProdutoInteractor'
 import ProdutoMongoDatasource from '../../../dataSources/produtoMongoDatasource'
 import Produto from '@/core/entities/produto'
 
-class ProdutoInteractors {
+export default class ProdutoInteractors {
   async getAll (): Promise<Produto[]> {
     const repository = new ProdutoMongoDatasource()
     const interactor = new GetAllProdutoInteractor()
@@ -37,5 +37,3 @@ class ProdutoInteractors {
     return await interactor.deleteProduto(repository, idProduto)
   }
 }
-
-module.exports = new ProdutoInteractors()

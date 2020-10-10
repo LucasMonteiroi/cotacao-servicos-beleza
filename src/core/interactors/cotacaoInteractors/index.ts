@@ -6,7 +6,7 @@ import DeleteCotacaoInteractor from './deleteCotacaoInteractor'
 import CotacaoMongoDatasource from '../../../dataSources/cotacaoMongoDatasource'
 import Cotacao from '@/core/entities/cotacao'
 
-class CotacaoInteractors {
+export default class CotacaoInteractors {
   async getAll (): Promise<Cotacao[]> {
     const repository = new CotacaoMongoDatasource()
     const interactor = new GetAllCotacaoInteractor()
@@ -37,5 +37,3 @@ class CotacaoInteractors {
     return await interactor.deleteCotacao(repository, idCotacao)
   }
 }
-
-module.exports = new CotacaoInteractors()
