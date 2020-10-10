@@ -25,10 +25,10 @@ export default class ProdutoInteractors {
     return await interactor.createProduto(repository, produto)
   }
 
-  async update (produto: Produto): Promise<Boolean> {
+  async update (idProduto: string, produto: Produto): Promise<Boolean> {
     const repository = new ProdutoMongoDatasource()
     const interactor = new UpdateProdutoInteractor()
-    return await interactor.updateProduto(repository, produto)
+    return await interactor.updateProduto(repository, idProduto, produto)
   }
 
   async delete (idProduto: String): Promise<Boolean> {
