@@ -1,0 +1,103 @@
+<div class="card card-custom gutter-b">
+  <div class="card-header">
+    <div class="card-title">
+      <h3 class="card-label">Clientes</h3>
+    </div>
+    <div class="card-toolbar">
+      <!--begin::Button-->
+      <button
+        mat-raised-button
+        matTooltip="Novo Cliente"
+        class="btn btn-icon btn-icon-primary font-weight-bolder"
+        (click)="openAddClientesModal()"
+      >
+        <i class="fas fa-plus-square"></i>
+      </button>
+      <!--end::Button-->
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="example mb-10">
+      <div class="example-header">
+        <mat-form-field>
+          <mat-label>Filtro</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="" #input />
+        </mat-form-field>
+      </div>
+      <div class="example-container mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="Id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >ID</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Nome">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Nome</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+          </ng-container>
+
+          <!-- Color Column -->
+          <ng-container matColumnDef="Telefone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Telefone</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              {{ row.color }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Ações</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">
+              <button
+                mat-icon-button
+                matTooltip="Visualizar"
+                class="btn btn-sm btn-icon btn-icon-primary"
+              >
+                <i class="icon far fa-eye"></i>
+              </button>
+              <button
+                mat-icon-button
+                matTooltip="Editar"
+                class="btn btn-sm btn-icon btn-icon-warning"
+              >
+                <i class="icon far fa-edit"></i>
+              </button>
+              <button
+                mat-icon-button
+                matTooltip="Remover"
+                class="btn btn-sm btn-icon btn-icon-danger"
+              >
+                <i class="icon fas fa-trash-alt"></i>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">
+              Não foi localizado itens de acordo com: "{{ input.value }}"
+            </td>
+          </tr>
+        </mat-table>
+
+        <mat-paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
