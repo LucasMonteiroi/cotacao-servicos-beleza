@@ -25,10 +25,10 @@ export default class CotacaoInteractors {
     return await interactor.createCotacao(repository, cotacao)
   }
 
-  async update (cotacao: Cotacao): Promise<Boolean> {
+  async update (idCotacao: string, cotacao: Cotacao): Promise<Boolean> {
     const repository = new CotacaoMongoDatasource()
     const interactor = new UpdateCotacaoInteractor()
-    return await interactor.updateCotacao(repository, cotacao)
+    return await interactor.updateCotacao(repository, idCotacao, cotacao)
   }
 
   async delete (idCotacao: String): Promise<Boolean> {
